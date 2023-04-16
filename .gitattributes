@@ -51,8 +51,20 @@
 *.meta linguist-generated
 *.prefab linguist-generated
 *.unity linguist-generated
-# For line ending normalization between Unix and Windows
+# Set the default behavior, in case people don't have core.autocrlf set.
 * text=auto
+
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+*.c text
+*.h text
+
+# Declare files that will always have CRLF line endings on checkout.
+*.sln text eol=crlf
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
 
 # Unity 
 *.cs diff=csharp text
