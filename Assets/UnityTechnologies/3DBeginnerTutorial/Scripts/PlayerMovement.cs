@@ -14,11 +14,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 m_Movement;
     // A variable to store rotation
     Quaternion m_Rotation = Quaternion.identity;
-
-    void CreateDust()
-    {
-        Dust.Play();
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
     }
 
+    void CreateDust()
+    {
+        Dust.Play();
+    }
 
      void Update()
     {
@@ -86,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
         {
             CreateDust();
         }
-
         // Set the bool of the animator component accordingly
         m_Animator.SetBool("IsWalking", isWalking);
 

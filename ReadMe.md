@@ -1,8 +1,8 @@
 ### Game Dev Haunted Jaunt Project
 
-We use the dot product to calculate the distance between the enemies and the player, and based off that calculation, we used linear interpolation to increase the player's speed when they get near enemies.
+We use the dot product to calculate the distance between the enemies and the player, and based off that calculation, we used linear interpolation to increase the player's speed when they get near the main gargoyle at the beginning, we wanted to get it working for all the enemies, and make it more noticable, but we ran out of time.
 
-We added particle dust to footsteps that fade away.
+We added particle dust to the player's footsteps when they move that fades away.
 
 Jaxon Simmons: Player Movement part 1 and 2, and particle effect
 
