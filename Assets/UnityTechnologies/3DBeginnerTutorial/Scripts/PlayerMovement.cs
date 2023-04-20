@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     Animator m_Animator;
     Rigidbody m_Rigidbody;
+    AudioSource m_AudioSource;
     Vector3 m_Movement;
     // A variable to store rotation
     Quaternion m_Rotation = Quaternion.identity;
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,6 +40,19 @@ public class PlayerMovement : MonoBehaviour
 
         // Set the bool of the animator component accordingly
         m_Animator.SetBool("IsWalking", isWalking);
+        // Add footsteps sounds when walking
+        if(isWalking)
+        {
+            if(!m_AudioSource.isPlaying)
+            {
+                m_AudioSource.Play();
+            }
+
+        }
+        else
+        {
+            m_AudioSource.Stop();
+        }
 
         // Create a Vector3 that stores the location of transform.forward rotated around towards m_Movement by an angle of turnSpeed radians * Time.deltaTime and a magnitude of 0f
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
