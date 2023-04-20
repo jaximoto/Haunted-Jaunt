@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float turnSpeed = 20f;
+    public ParticleSystem dust;
 
     Animator m_Animator;
     Rigidbody m_Rigidbody;
@@ -12,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     // A variable to store rotation
     Quaternion m_Rotation = Quaternion.identity;
     // Start is called before the first frame update
+
+    void CreateDust()
+    {
+        dust.Play();
+    }
     void Start()
     {
         m_Animator = GetComponent<Animator>();
@@ -35,7 +41,10 @@ public class PlayerMovement : MonoBehaviour
         bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
         bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
         bool isWalking = hasHorizontalInput || hasVerticalInput;
-
+        if (isWalking)
+        {
+            CreateDust();
+        }
         // Set the bool of the animator component accordingly
         m_Animator.SetBool("IsWalking", isWalking);
 
@@ -53,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * m_Animator.deltaPosition.magnitude);
 
         m_Rigidbody.MoveRotation(m_Rotation);
+        
     }
 
 }
